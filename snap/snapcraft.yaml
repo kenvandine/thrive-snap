@@ -1,0 +1,38 @@
+name: thrive
+version: 0.8.1.1
+summary: An evolution simulation game
+description: 
+  An evolution simulation game. Take control of your species in the environment and edit your species as a whole to compete with other evolving species
+  From the lowly tidepools of your home planet, you will rise to cosmic dominance. At every step, powerful creation tools and deep simulation mechanics will aid your species’ development. Revolutionary Games is the open-source team of dedicated volunteers aiming to make Thrive a reality.
+
+base: core24
+platforms:
+  amd64:
+confinement: strict
+grade: stable
+issues: https://github.com/kenvandine/thrive-snap/issues
+contact: https://github.com/kenvandine/thrive-snap/issues
+website: https://revolutionarygamesstudio.com/
+icon: icon.png
+
+apps:
+  thrive:
+    desktop: Thrive.desktop
+    extensions: [gnome]
+    command: Thrive
+    plugs:
+      - audio-playback
+      - network
+    environment:
+      DISABLE_WAYLAND: 1
+
+parts:
+  thrive:
+    source: https://github.com/Revolutionary-Games/Thrive/releases/download/v$SNAPCRAFT_PROJECT_VERSION/Thrive_$SNAPCRAFT_PROJECT_VERSION_linux_x11.7z
+    plugin: dump
+    build-packages:
+      - 7zip
+    override-pull: |
+      craftctl default
+      mv Thrive_$SNAPCRAFT_PROJECT_VERSION_linux_x11/* $CRAFT_PART_INSTALL/
+      rm -rf Thrive_$SNAPCRAFT_PROJECT_VERSION_linux_x11
