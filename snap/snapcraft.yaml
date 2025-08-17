@@ -29,11 +29,11 @@ apps:
 
 parts:
   thrive:
-    source: https://github.com/Revolutionary-Games/Thrive/releases/download/v$SNAPCRAFT_PROJECT_VERSION/Thrive_$SNAPCRAFT_PROJECT_VERSION_linux_x11.7z
+    source: https://github.com/Revolutionary-Games/Thrive/releases/download/v$SNAPCRAFT_PROJECT_VERSION/Thrive_$SNAPCRAFT_PROJECT_VERSION.0_linux_x11.7z
     plugin: dump
     build-packages:
       - 7zip
     override-pull: |
       craftctl default
-      mv Thrive_$SNAPCRAFT_PROJECT_VERSION_linux_x11/* $CRAFT_PART_INSTALL/
+      mv Thrive_$SNAPCRAFT_PROJECT_VERSION*_linux_x11/* $CRAFT_PART_INSTALL/
       rm -rf Thrive_$SNAPCRAFT_PROJECT_VERSION_linux_x11
